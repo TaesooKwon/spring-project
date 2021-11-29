@@ -12,7 +12,7 @@
   </head>
   <body>
  <h1>
-   Hello world!!ㅁㄴㅇㄹㅁㄴㄹadaddagbh
+   Hello world!!는 무슨
  </h1>
  <p> the time on the server is ${time}</p>
   </body>

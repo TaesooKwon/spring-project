@@ -34,7 +34,6 @@
           <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.11.4" />
           <element id="library" level="project" name="Maven: com.zaxxer:HikariCP:2.7.4" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.26" />
-          <element id="library" level="project" name="mysql-connector-java-8.0.26" />
           <element id="library" level="project" name="Maven: org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4:1.16" />
           <element id="library" level="project" name="javaxservletjspjstl-121" />
           <element id="library" level="project" name="javaxservletjspjstl-api-121" />
@@ -59,6 +58,7 @@
           <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.4.6" />
           <element id="library" level="project" name="Maven: org.quartz-scheduler:quartz-jobs:2.3.0" />
           <element id="library" level="project" name="Maven: org.quartz-scheduler:quartz:2.3.0" />
+          <element id="library" level="project" name="mysql-connector-java-8.0.26" />
         </element>
       </element>
     </root>

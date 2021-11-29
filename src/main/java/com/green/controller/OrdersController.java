@@ -13,22 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/member/*")
+@RequestMapping("/orders/*")
 @Log4j
-public class ServiceController {
-    @Setter(onMethod_=@Autowired)
-    MemberService service;
+public class OrdersController {
 
-    @GetMapping("/register")
-    public void register() {
-        System.out.println("1) 컨트롤러 등록 get ");
-        //return "/board/register";
-    }
-    @PostMapping("/register")
-    public void postRegister(MemberVO vo, RedirectAttributes rttr) {
-        System.out.println("1) 컨트롤러 등록 post " +vo);
-        service.insert(vo);
-
-    }
 }
 

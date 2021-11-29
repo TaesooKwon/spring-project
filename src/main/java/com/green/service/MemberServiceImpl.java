@@ -17,13 +17,31 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public List<MemberVO> getList() {
-        log.info("서비스에서 전체 데이터 가져오기---------------------------------");
+        log.info("서비스에서 member getList---------------------------------");
         return mapper.getList();
     }
 
     @Override
     public void insert(MemberVO vo) {
-        log.info("서비스에서 데이터 입력하기----------------------------------");
+        log.info("서비스에서 member insert----------------------------------");
         mapper.insert(vo);
+    }
+
+    @Override
+    public MemberVO read(int id) {
+        log.info("서비스에서 member read------------------");
+        return mapper.read(id);
+    }
+
+    @Override
+    public void update(MemberVO vo) {
+        log.info("서비스에서 member update------------------");
+        mapper.update(vo);
+    }
+
+    @Override
+    public void delete(int id) {
+        log.info("서비스에서 member delete------------------");
+        mapper.delete(id);
     }
 }

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="javaxservletjspjstl-api-121">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../green/javajre/javaxservletjspjstl-api-121.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

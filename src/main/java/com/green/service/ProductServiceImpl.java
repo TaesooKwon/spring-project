@@ -11,13 +11,13 @@ import java.util.List;
 
 @Service
 @Log4j
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService {
 
-    @Setter(onMethod_=@Autowired)
+    @Setter(onMethod_ = @Autowired)
     private ProductMapper mapper;
 
     @Override
-    public List<ProductVO> getList() {
+    public List < ProductVO > getList() {
         log.info("서비스에서 product getList---------------------------------");
         return mapper.getList();
     }

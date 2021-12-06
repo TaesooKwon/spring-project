@@ -17,7 +17,7 @@ public class JdbcTest {
         //드라이버로드(드라이버네임)
         Class.forName("com.mysql.cj.jdbc.Driver");
 
-        log.info("------연결확인-----------------------------");
+        log.info("------연결확인--------");
 
         String url = "jdbc:mysql://localhost:3306/testDb?serverTimezone=UTC";
         String username = "root";

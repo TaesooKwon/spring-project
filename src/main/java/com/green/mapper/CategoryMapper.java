@@ -13,5 +13,3 @@ public interface CategoryMapper {
     public void update(CategoryVO vo);
     public void delete(int id);
 }
-
-

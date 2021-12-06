@@ -10,4 +10,9 @@ public interface MemberService {
     public MemberVO read(int id);
     public void update(MemberVO vo);
     public void delete(int id);
+    public int idCheck(String member_id) throws Exception;
+    public String findId(MemberVO vo) throws Exception;
+    public String findPw(MemberVO vo) throws Exception;
+    /* 로그인 */
+    public MemberVO memberLogin(MemberVO vo) throws Exception;
 }

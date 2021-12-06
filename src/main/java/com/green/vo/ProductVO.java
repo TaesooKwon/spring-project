@@ -11,6 +11,7 @@ public class ProductVO {
 
     private int id;
     private String product_name;
+    private String category_name;
     private int product_price;
     private int product_discount;
     private int product_totalprice;

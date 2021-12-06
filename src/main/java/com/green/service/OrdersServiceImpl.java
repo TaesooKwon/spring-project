@@ -11,13 +11,13 @@ import java.util.List;
 
 @Service
 @Log4j
-public class OrdersServiceImpl implements OrdersService{
+public class OrdersServiceImpl implements OrdersService {
 
-    @Setter(onMethod_= @Autowired)
+    @Setter(onMethod_ = @Autowired)
     private OrdersMapper mapper;
 
     @Override
-    public List<OrdersVO> getList() {
+    public List < OrdersVO > getList() {
         log.info("서비스에서 orders getList---------------------------------");
         return mapper.getList();
     }

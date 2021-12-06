@@ -6,10 +6,20 @@
     <select id="getList" resultType="com.green.vo.CategoryVO">
         select * from category
     </select>
-
+    <select id="read" resultType="com.green.vo.CategoryVO">
+        select * from category where id=#{id}
+    </select>
     <insert id="insert">
         insert into category(id, category_name, product_id)
         values (#{id},#{category_name},#{product_id})
     </insert>
+    <delete id="delete">
+        delete from category where id=#{id}
+    </delete>
+    <update id="update">
+        update category
+        set category_name =#{category_name}
+        where id = #{id}
+    </update>
 </mapper>
 

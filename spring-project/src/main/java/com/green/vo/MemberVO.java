@@ -19,6 +19,7 @@ public class MemberVO {
     private String member_gender;
     private String member_role;
     private Date member_date;
+    private String member_email;
 }
 
 

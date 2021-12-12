@@ -11,15 +11,33 @@ import java.util.List;
 
 @Service
 @Log4j
-public class ProductServiceImpl implements ProductService {
+public class ProductServiceImpl implements ProductService{
 
-    @Setter(onMethod_ = @Autowired)
+    @Setter(onMethod_=@Autowired)
     private ProductMapper mapper;
 
     @Override
-    public List < ProductVO > getList() {
+    public List<ProductVO> getList() {
         log.info("서비스에서 product getList---------------------------------");
         return mapper.getList();
+    }
+
+    @Override
+    public List<ProductVO> digital_homeappList() {
+        log.info("서비스에서 category(digital/homeapp) getList---------------------------------");
+        return mapper.digital_homeappList();
+    }
+
+    @Override
+    public List<ProductVO> life_healthList() {
+        log.info("서비스에서 category(life/health) getList---------------------------------");
+        return mapper.life_healthList();
+    }
+
+    @Override
+    public List<ProductVO> sports_leisureList() {
+        log.info("서비스에서 category(sports/leisure) getList---------------------------------");
+        return mapper.sports_leisureList();
     }
 
     @Override

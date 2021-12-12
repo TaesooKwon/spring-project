@@ -11,13 +11,13 @@ import java.util.List;
 
 @Service
 @Log4j
-public class ReviewServiceImpl implements ReviewService {
+public class ReviewServiceImpl implements ReviewService{
 
-    @Setter(onMethod_ = @Autowired)
+    @Setter(onMethod_=@Autowired)
     private ReviewMapper mapper;
 
     @Override
-    public List < ReviewVO > getList() {
+    public List<ReviewVO> getList() {
         log.info("서비스에서 review getList---------------------------------");
         return mapper.getList();
     }

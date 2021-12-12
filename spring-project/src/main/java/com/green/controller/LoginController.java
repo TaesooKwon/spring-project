@@ -46,18 +46,19 @@ public class LoginController {
             return "redirect:/login/login";
         }
         MemberVO lvo = service.memberLogin(member); // 제출한아이디와 일치하는 아이디 있는지
-        log.info("2" + member.getMember_id());
-        log.info("2" + member.getMember_password());
         if (lvo != null) { // 일치하는 아이디 존재시
 
             rawPw = member.getMember_password(); // 사용자가 제출한 비밀번호
             encodePw = lvo.getMember_password(); // 데이터베이스에 저장한 인코딩된 비밀번호
 
             if (true == pwEncoder.matches(rawPw, encodePw)) { // 비밀번호 일치여부 판단
-
+                if(lvo.getMember_verify()=="y"){
+                    log.info("관리자 계정입니다"+lvo.getMember_verify()+"=================================");
+                }
                 lvo.setMember_password(""); // 인코딩된 비밀번호 정보 지움
                 session.setAttribute("member", lvo); // session에 사용자의 정보 저장
-                return "redirect:/main/loginmain"; // 메인페이지 이동
+
+                return "redirect:/main/main"; // 메인페이지 이동
 
 
             } else {

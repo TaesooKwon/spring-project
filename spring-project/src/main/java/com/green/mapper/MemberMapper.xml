@@ -41,7 +41,7 @@
     </select>
     <select id="memberLogin" resultType="com.green.vo.MemberVO">
 
-        select member_id,member_password, member_name from member where member_id = #{member_id}
+        select member_id,member_password, member_name,member_verify from member where member_id = #{member_id}
 
 
     </select>

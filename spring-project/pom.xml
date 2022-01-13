@@ -38,6 +38,14 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${org.springframework-version}</version>
         </dependency>
+
+        <!--  12/23 새로 추가    -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
+        <!--  =================== -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
@@ -252,6 +260,16 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+       <!--  여기서 부터 제가 새로 추가했습니다-->
+        <!--  여기서 부터 제가 새로 추가했습니다-->
+        <!--  여기서 부터 제가 새로 추가했습니다-->
+        <!--  여기서 부터 제가 새로 추가했습니다-->
+        <!--  여기서 부터 제가 새로 추가했습니다-->
+        <!--  여기서 부터 제가 새로 추가했습니다-->
+        <!--  여기서 부터 제가 새로 추가했습니다-->
+        <!--  여기서 부터 제가 새로 추가했습니다-->
+
+
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>

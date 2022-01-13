@@ -12,7 +12,13 @@ public interface MemberService {
     public void delete(int id);
     public int idCheck(String member_id) throws Exception;
     public String findId(MemberVO vo) throws Exception;
-    public String findPw(MemberVO vo) throws Exception;
+    public void changePw(MemberVO vo) throws Exception;
+    public String idMatchEmail(MemberVO vo);
+    public String adminCheck(String member_id);
     /* 로그인 */
     public MemberVO memberLogin(MemberVO vo) throws Exception;
+    public String getId(String member_id);
+
+    /* 주문자 정보 */
+    public MemberVO getMemberInfo(String member_id);
 }

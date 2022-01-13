@@ -55,15 +55,36 @@ public class MemberServiceImpl implements MemberService {
         return mapper.findId(vo);
     }
     @Override
-    public String findPw(MemberVO vo) throws Exception {
+    public void changePw(MemberVO vo) throws Exception {
 
-        return mapper.findPw(vo);
+        mapper.changePw(vo);
     }
+
+    @Override
+    public String idMatchEmail(MemberVO vo) {
+        return mapper.idMatchEmail(vo);
+    }
+
+    @Override
+    public String adminCheck(String member_id) {
+        return mapper.adminCheck(member_id);
+    }
+
     /* 로그인 */
     @Override
     public MemberVO memberLogin(MemberVO vo) throws Exception {
 
         return mapper.memberLogin(vo);
+    }
+
+    @Override
+    public String getId(String member_id) {
+        return mapper.getId(member_id);
+    }
+
+    @Override
+    public MemberVO getMemberInfo(String member_id) {
+        return mapper.getMemberInfo(member_id);
     }
 
 }

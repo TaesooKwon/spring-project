@@ -14,8 +14,13 @@ public interface MemberMapper {
     public void delete(int id);
     public int idCheck(String member_id);
     public String findId(MemberVO vo);
-    public String findPw(MemberVO vo);
+    public void changePw(MemberVO vo);
+    public String idMatchEmail(MemberVO vo);
+    public String adminCheck(String member_id);
     /* 로그인 */
     public MemberVO memberLogin(MemberVO vo);
-
+    public String getId(String member_id);
+    public MemberVO getMemberInfo(String member_id);
 }
+
+

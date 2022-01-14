@@ -220,6 +220,7 @@
       <form class="order_form" action="/order" method="post">
         <!-- 주문자 회원번호 -->
         <input name="member_id" value="${memberInfo.member_id}" type="hidden">
+        <input name="address"  type="hidden">
         <!-- 주소록 & 받는이-->
         <input name="member_address" type="hidden">
         <!-- 사용 포인트 -->
@@ -307,15 +308,15 @@
           // 법정동명이 있을 경우 추가한다. (법정리는 제외)
           // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
           if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-            extraAddr += data.bname;
+            addr += data.bname;
           }
           // 건물명이 있고, 공동주택일 경우 추가한다.
           if(data.buildingName !== '' && data.apartment === 'Y'){
-            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+            addr += (addr !== '' ? ', ' + data.buildingName : data.buildingName);
           }
           // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-          if(extraAddr !== ''){
-            extraAddr = ' (' + extraAddr + ')';
+          if(addr !== ''){
+            addr = ' (' + addr + ')';
           }
           // 추가해야할 코드
           // 주소변수 문자열과 참고항목 문자열 합치기
@@ -327,12 +328,11 @@
 
         // 제거해야할 코드
         // 우편번호와 주소 정보를 해당 필드에 넣는다.
-        $(".address1_input").val(data.zonecode);
+        $(".address1_input").val(data.zonecode+addr)
         $(".address2_input").val(addr);
         // 커서를 상세주소 필드로 이동한다.
         $(".address3_input").attr("readonly", false);
         $(".address3_input").focus();
-
 
       }
     }).open();
@@ -453,37 +453,7 @@
   $(".order_btn").on("click", function(){
 
     payment();
-    if(payment()=="fail"){
-      console.log("test==================")
-      /* 주소 정보 & 받는이*/
-      $(".addressInfo_input_div").each(function(i, obj){
-        if($(obj).find(".selectAddress").val() === 'T'){
-          $("input[name='addressee']").val($(obj).find(".addressee_input").val());
-          $("input[name='member_address']").val($(obj).find(".address1_input").val());
-        }
-      });
 
-      /* 사용 포인트 */
-      $("input[name='usePoint']").val($(".order_point_input").val());
-
-      /* 상품정보 */
-      let form_contents = '';
-      $(".goods_table_price_td").each(function(index, element){
-        let id = $(element).find(".individual_id_input").val();
-        let Product_Count = $(element).find(".individual_Product_Count_input").val();
-        let id_input = "<input name='orders[" + index + "].id' type='hidden' value='" + id + "'>";
-        form_contents += id_input;
-        let Product_Count_input = "<input name='orders[" + index + "].Product_Count' type='hidden' value='" + Product_Count + "'>";
-        form_contents += Product_Count_input;
-      });
-
-
-      $(".order_form").append(form_contents);
-
-
-      /* 서버 전송 */
-      $(".order_form").submit();
-    }
 
 
   });
@@ -546,13 +516,54 @@ function payment(){
       msg += '상점 거래ID : ' + rsp.merchant_uid;
       msg += '결제 금액 : ' + rsp.paid_amount;
       msg += '카드 승인번호 : ' + rsp.apply_num;
-      console.log("성공~~~~~~")
-      return "success"
+
+      /* 주소 정보 & 받는이*/
+
+      $(".addressInfo_input_div").each(function(i, obj){
+        if($(obj).find(".selectAddress").val() === 'T'){
+          let address = ''+$(obj).find(".addressee_input").val()
+          $("input[name='address']").val(address);
+          $("input[name='member_address']").val($(obj).find(".address1_input").val()+","+$(obj).find(".address3_input").val());
+        }
+      });
+
+      /* 사용 포인트 */
+      $("input[name='usePoint']").val($(".order_point_input").val());
+
+      /* 상품정보 */
+      let form_contents = '';
+      $(".goods_table_price_td").each(function(index, element){
+        let Product_Id = $(element).find(".individual_bookId_input").val();
+        let Product_Id_input = "<input name='orders[" + index + "].Product_Id' type='hidden' value='" + Product_Id + "'>";
+        form_contents += Product_Id_input;
+
+        let Product_Count = parseInt($(element).find(".individual_bookCount_input").val());
+        let Product_Count_input = "<input name='orders[" + index + "].Product_Count' type='hidden' value='" + Product_Count + "'>";
+        form_contents += Product_Count_input;
+
+        let totalPrice = parseInt($(element).find(".individual_totalPrice_input").val());
+        let totalPrice_input = "<input name='orders[" + index + "].totalPrice' type='hidden' value='" + totalPrice + "'>";
+        form_contents += totalPrice_input;
+
+        let Product_Price = parseInt($(element).find(".individual_bookPrice_input").val());
+        let Product_Price_input = "<input name='orders[" + index + "].Product_Price' type='hidden' value='" + Product_Price + "'>";
+        form_contents += Product_Price_input;
+
+
+      });
+
+
+      $(".order_form").append(form_contents);
+
+
+      /* 서버 전송 */
+      $(".order_form").submit();
+
     } else {
       var msg = '결제에 실패하였습니다.';
       msg += '에러내용 : ' + rsp.error_msg;
-      console.log("실~~~~~~")
-      return "fail"
+
+
     }
     alert(msg);
 });

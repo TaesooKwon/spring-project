@@ -2,6 +2,8 @@ package com.green.mapper;
 
 import com.green.vo.*;
 
+import java.util.List;
+
 public interface OrdersMapper {
     /* 주문 상품 정보 */
     public OrderPageItemDTO getGoodsInfo(int id);
@@ -20,4 +22,13 @@ public interface OrdersMapper {
 
     /* 주문 재고 차감 */
     public int deductStock(ProductVO product);
+
+    /* 주문 취소 */
+    public int orderCancel(String order_id);
+
+    /* 주문 상품 정보(주문취소) */
+    public List<OrderItemDTO> getOrderItemInfo(String orderId);
+
+    /* 주문 정보(주문취소) */
+    public OrderDTO getOrder(String order_id);
 }

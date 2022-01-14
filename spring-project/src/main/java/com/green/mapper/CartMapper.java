@@ -15,6 +15,9 @@ public interface CartMapper {
     /* 로그아웃시 삭제 */
     public int deleteAllCart(String memberId);
 
+    /* 주문시 삭제 */
+    public int deleteOrderCart();
+
     /* 카트 수량 수정 */
     public int modifyCount(CartVO cart);
 

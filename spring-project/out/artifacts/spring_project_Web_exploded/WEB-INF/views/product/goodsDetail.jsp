@@ -56,7 +56,6 @@
         </div>
         <div class="button_set">
             <a class="btn_cart">장바구니 담기</a>
-            <a class="btn_buy">바로구매</a>
         </div>
     </div>
     <div class="product_detail">DETAILS</div>
@@ -438,12 +437,6 @@
             alert("로그인이 필요합니다.");
         }
     }
-    /* 바로구매 버튼 */
-    $(".btn_buy").on("click", function(){
-        let Product_Count = $(".quantity_input").val();
-        $(".order_form").find("input[name='orders[0].product_Count']").val(Product_Count);
-        $(".order_form").submit();
-    });
 </script>
 </body>
 </html>

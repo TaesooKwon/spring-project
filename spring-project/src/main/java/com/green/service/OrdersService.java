@@ -1,5 +1,6 @@
 package com.green.service;
 
+import com.green.vo.OrderCancelDTO;
 import com.green.vo.OrderDTO;
 import com.green.vo.OrderPageItemDTO;
 
@@ -11,4 +12,7 @@ public interface OrdersService {
 
     /* 주문 */
     public void order(OrderDTO orw);
+
+    /* 주문 취소 */
+    public void orderCancel(OrderCancelDTO dto);
 }

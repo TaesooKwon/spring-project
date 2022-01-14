@@ -51,22 +51,7 @@ public class OrdersController {
 
         ordersService.order(od);
 
-        MemberVO member = new MemberVO();
-        member.setMember_id(od.getMember_id());
-
-        HttpSession session = request.getSession();
-
-        try {
-            MemberVO memberLogin = memberService.memberLogin(member);
-            memberLogin.setMember_password("");
-            session.setAttribute("member", memberLogin);
-
-        } catch (Exception e) {
-
-            e.printStackTrace();
-        }
-
-        return "redirect:/main";
+        return "redirect:/main/main";
     }
 
 }

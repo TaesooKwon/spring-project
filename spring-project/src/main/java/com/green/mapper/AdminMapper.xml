@@ -96,4 +96,28 @@
     <select id="getAttachInfo" resultType="com.green.vo.AttachImageVO">
         select * from attachimage where id = #{id}
     </select>
+
+    <!-- 주문 리스트 -->
+    <select id="getOrderList" resultType="com.green.vo.OrderDTO">
+
+        select order_id, member_id, orderstate, orderDate
+        from product_order
+        <if test="keyword != null">
+            where member_id like concat('%',#{keyword}, '%')
+        </if>
+        order by orderDate desc
+        limit #{skip}, #{amount}
+
+    </select>
+
+    <!-- 상품 총 개수 -->
+    <select id="getOrderTotal" resultType="int">
+
+        select count(*) from product_order
+
+        <if test="keyword != null">
+            where member_id like concat('%',#{keyword}, '%')
+        </if>
+
+    </select>
 </mapper>

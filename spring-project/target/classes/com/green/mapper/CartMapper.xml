@@ -20,6 +20,13 @@
 
     </delete>
 
+    <!-- 주문시 카트 삭제 -->
+    <delete id="deleteOrderCart">
+
+        delete from product_cart where cartId >= 0
+
+    </delete>
+
     <!-- 카트 비우기 -->
     <delete id="deleteAllCart">
 

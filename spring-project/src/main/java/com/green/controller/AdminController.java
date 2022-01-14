@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.green.service.AdminService;
 import com.green.service.AuthorService;
+import com.green.service.OrdersService;
 import com.green.vo.*;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -44,6 +45,9 @@ public class AdminController {
 
     @Setter(onMethod_=@Autowired)
     private AdminService adminService;
+
+    @Setter(onMethod_=@Autowired)
+    private OrdersService ordersService;
 
     @RequestMapping(value="main", method = RequestMethod.GET)
     public void adminMainGET() throws Exception{
@@ -417,6 +421,32 @@ public class AdminController {
 
         return new ResponseEntity<String>("success", HttpStatus.OK);
 
+
+    }
+
+    /* 주문 현황 페이지 */
+    @GetMapping("/orderList")
+    public String orderListGET(Criteria cri, Model model) {
+
+        List<OrderDTO> list = adminService.getOrderList(cri);
+        log.info("1:" + list);
+        if(!list.isEmpty()) {
+            model.addAttribute("list", list);
+            model.addAttribute("pageMaker", new PageDTO(cri, adminService.getOrderTotal(cri)));
+        } else {
+            model.addAttribute("listCheck", "empty");
+        }
+        log.info("2:" + list);
+        return "/admin/orderList";
+    }
+
+    /* 주문삭제 */
+    @PostMapping("/orderCancel")
+    public String orderCancelPOST(OrderCancelDTO dto) {
+
+        ordersService.orderCancel(dto);
+        log.info("3:" + dto);
+        return "redirect:/admin/orderList?keyword=" + dto.getKeyword() + "&amount=" + dto.getAmount() + "&pageNum=" + dto.getPageNum();
 
     }
 }

@@ -19,14 +19,14 @@
     <!-- 주문 테이블 등록 -->
     <insert id="enrollOrder">
 
-        insert into product_order(orderId, address, member_id, member_address, orderState, deliveryCost, usePoint)
-        values(#{orderId},#{address}, #{member_id}, #{member_address}, '배송준비', #{deliveryCost}, #{usePoint})
+        insert into product_order(order_id, address, member_id, member_address, orderState, deliveryCost, usePoint)
+        values(#{order_id},#{address}, #{member_id}, #{member_address}, '배송준비', #{deliveryCost}, #{usePoint})
 
     </insert>
     <!-- 주문 아이템 테이블 등록 -->
     <insert id="enrollOrderItem">
 
-        insert into green_orderItem(orderId, Product_Id, Product_Count, Product_Price, Product_Discount, savePoint)
+        insert into product_orderitem(orderId, Product_Id, Product_Count, Product_Price, Product_Discount, savePoint)
         values(#{orderId}, #{Product_Id}, #{Product_Count}, #{Product_Price}, #{Product_Discount}, #{savePoint})
 
     </insert>
@@ -48,4 +48,25 @@
         delete from cart where member_id = #{member_id} and id = #{id}
 
     </delete>
+
+    <!-- 주문취소 -->
+    <update id="orderCancel">
+        update product_order set orderState = '주문취소' where order_id = #{order_id}
+    </update>
+
+    <!-- 주문 상품 정보(주문취소) -->
+    <select id="getOrderItemInfo" resultType="com.green.vo.OrderItemDTO">
+
+        select * from product_orderItem
+        where orderId = #{orderId}
+
+    </select>
+
+    <!-- 주문 정보(주문 취소) -->
+    <select id="getOrder" resultType="com.green.vo.OrderDTO">
+
+        select * from product_order
+        where order_id = #{order_id}
+
+    </select>
 </mapper>
